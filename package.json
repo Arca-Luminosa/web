@@ -1,0 +1,38 @@
+{
+  "name": "al-web",
+  "version": "0.0.1",
+  "main": "index.js",
+  "repository": "git@github.com:Arca-Luminosa/web.git",
+  "author": "Carlos Sosa <cesosag@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "apps/*"
+    ]
+  },
+  "devDependencies": {
+    "husky": "9.0.11",
+    "lint-staged": "15.2.2",
+    "turbo": "1.12.4"
+  },
+  "scripts": {
+    "prepare": "husky install",
+    "build": "turbo build",
+    "test": "turbo test",
+    "lint": "turbo lint",
+    "cms:dev": "yarn workspace @al/cms develop",
+    "cms:build": "yarn workspace @al/cms build",
+    "web:dev": "yarn workspace @al/web dev",
+    "web:build": "yarn workspace @al/web build",
+    "web:start": "yarn workspace @al/web start",
+    "web:lint": "yarn workspace @al/web lint",
+    "web:test": "yarn workspace @al/web test",
+    "web:test:watch": "yarn workspace @al/web test:watch",
+    "web:generate": "yarn workspace @al/web generate"
+  },
+  "volta": {
+    "node": "20.11.1",
+    "yarn": "1.22.18"
+  }
+}
