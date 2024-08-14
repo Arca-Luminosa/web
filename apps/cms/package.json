@@ -9,20 +9,20 @@
     "build": "strapi build",
     "strapi": "strapi"
   },
-  "devDependencies": {},
   "dependencies": {
-    "@strapi/strapi": "4.23.1",
-    "@strapi/plugin-users-permissions": "4.23.1",
-    "@strapi/plugin-i18n": "4.23.1",
-    "@strapi/plugin-cloud": "4.23.1",
-    "better-sqlite3": "9.5.0",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "@strapi/plugin-cloud": "4.25.8",
+    "@strapi/plugin-i18n": "4.25.8",
+    "@strapi/plugin-users-permissions": "4.25.8",
+    "@strapi/strapi": "4.25.8",
+    "better-sqlite3": "11.1.2",
+    "pg": "8.12.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
     "react-router-dom": "5.3.4",
-    "styled-components": "5.3.3"
+    "styled-components": "5.3.11"
   },
   "author": {
-    "name": "A Strapi developer"
+    "name": "Carlos Sosa"
   },
   "strapi": {
     "uuid": "ce0000ff-04fb-4db9-8357-3415c9de4136"
