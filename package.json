@@ -14,7 +14,7 @@
   "devDependencies": {
     "husky": "9.1.4",
     "lint-staged": "15.2.9",
-    "turbo": "2.0.13"
+    "turbo": "2.0.14"
   },
   "scripts": {
     "prepare": "husky install",
