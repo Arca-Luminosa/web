@@ -36,17 +36,18 @@ const REDIS_URL = process.env.REDIS_URL || "redis://localhost:6379";
 const plugins = [
   `medusa-fulfillment-manual`,
   `medusa-payment-manual`,
-  {
-    resolve: `@medusajs/file-local`,
-    options: {
-      upload_dir: "uploads",
-    },
-  },
+  // {
+  //   resolve: `@medusajs/file-local`,
+  //   options: {
+  //     upload_dir: "uploads",
+  //   },
+  // },
   {
     resolve: "@medusajs/admin",
     /** @type {import('@medusajs/admin').PluginOptions} */
     options: {
-      autoRebuild: true,
+      autoRebuild: process.env.NODE_ENV === "development",
+			serve: process.env.NODE_ENV === "development",
       develop: {
         open: process.env.OPEN_BROWSER !== "false",
       },
@@ -83,8 +84,8 @@ const projectConfig = {
   cookie_secret: process.env.COOKIE_SECRET || "supersecret",
   store_cors: STORE_CORS,
   database_url: DATABASE_URL,
+	database_extra: process.env.NODE_ENV === "production" ? { ssl: { rejectUnauthorized: false } } : {},
   admin_cors: ADMIN_CORS,
-  // Uncomment the following lines to enable REDIS
   redis_url: REDIS_URL
 };
 
