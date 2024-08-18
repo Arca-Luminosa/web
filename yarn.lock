@@ -82,6 +82,7 @@ __metadata:
     medusa-payment-manual: "npm:1.0.25"
     medusa-payment-stripe: "npm:6.0.11"
     medusa-react: "npm:9.0.18"
+    medusa-storage-supabase: "npm:0.1.7"
     prism-react-renderer: "npm:2.3.1"
     react: "npm:18.3.1"
     react-dom: "npm:18.3.1"
@@ -4199,7 +4200,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@medusajs/admin-ui@npm:^2.1.16":
+"@medusajs/admin-ui@npm:^2.1.12, @medusajs/admin-ui@npm:^2.1.16":
   version: 2.1.16
   resolution: "@medusajs/admin-ui@npm:2.1.16"
   dependencies:
@@ -4287,6 +4288,35 @@ __metadata:
     webpackbar: "npm:^5.0.2"
     zod: "npm:^3.22.2"
   checksum: 10c0/2abf1a45f0065a9e7b316708a88a896c2641b50640f2d3ce27e27be6d0e2724a82a25ebed7c72175da5ede8ebbd808633036026bd4f65d0ae2ef21bd80259cd5
+  languageName: node
+  linkType: hard
+
+"@medusajs/admin@npm:7.1.11":
+  version: 7.1.11
+  resolution: "@medusajs/admin@npm:7.1.11"
+  dependencies:
+    "@medusajs/admin-ui": "npm:^2.1.12"
+    "@rollup/plugin-alias": "npm:5.0.0"
+    "@rollup/plugin-commonjs": "npm:24.1.0"
+    "@rollup/plugin-json": "npm:6.0.0"
+    "@rollup/plugin-node-resolve": "npm:15.0.2"
+    "@rollup/plugin-replace": "npm:5.0.2"
+    "@rollup/plugin-virtual": "npm:^3.0.1"
+    commander: "npm:^10.0.0"
+    dotenv: "npm:16.3.1"
+    esbuild: "npm:0.17.18"
+    express: "npm:4.18.2"
+    fs-extra: "npm:11.1.0"
+    lodash: "npm:^4.17.21"
+    medusa-core-utils: "npm:1.2.1"
+    rollup: "npm:3.20.7"
+    rollup-plugin-esbuild: "npm:5.0.0"
+    ts-dedent: "npm:^2.2.0"
+  peerDependencies:
+    "@medusajs/medusa": ^1.14.0
+  bin:
+    medusa-admin: bin/medusa-admin.js
+  checksum: 10c0/ce2c00516ab672d802c4743f09eed817417db89cf436bd7fddc3a3be82aa23119e7ac8e0c5a8b1763b5893d526752291135b3a18f9dc060ef1fd2ed2e5a9d36c
   languageName: node
   linkType: hard
 
@@ -10124,6 +10154,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@supabase/storage-js@npm:^2.5.5":
+  version: 2.6.0
+  resolution: "@supabase/storage-js@npm:2.6.0"
+  dependencies:
+    "@supabase/node-fetch": "npm:^2.6.14"
+  checksum: 10c0/f086f4553fb9b3cfdd38ca8595cd71eb4d2e4dae6bf8e9cc2bbd6b4945be339c3f931c101f623250890520730ca500bb84afaf190a5d857e01603af93c6a29f7
+  languageName: node
+  linkType: hard
+
 "@svgr/babel-plugin-add-jsx-attribute@npm:8.0.0":
   version: 8.0.0
   resolution: "@svgr/babel-plugin-add-jsx-attribute@npm:8.0.0"
@@ -11129,6 +11168,15 @@ __metadata:
   version: 5.1.2
   resolution: "@types/minimatch@npm:5.1.2"
   checksum: 10c0/83cf1c11748891b714e129de0585af4c55dd4c2cafb1f1d5233d79246e5e1e19d1b5ad9e8db449667b3ffa2b6c80125c429dbee1054e9efb45758dbc4e118562
+  languageName: node
+  linkType: hard
+
+"@types/multer@npm:^1.4.11":
+  version: 1.4.11
+  resolution: "@types/multer@npm:1.4.11"
+  dependencies:
+    "@types/express": "npm:*"
+  checksum: 10c0/ace8e9f5ac7d2d7f6e0c35b790504f582a2f82a84cc06a7b90315527599b95256595bc0bb5bba60220c20a558554f0c21b96b94848b885987ab69512a3a9865e
   languageName: node
   linkType: hard
 
@@ -14468,7 +14516,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cross-fetch@npm:4.0.0":
+"cross-fetch@npm:4.0.0, cross-fetch@npm:^4.0.0":
   version: 4.0.0
   resolution: "cross-fetch@npm:4.0.0"
   dependencies:
@@ -21854,6 +21902,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"medusa-core-utils@npm:1.2.1":
+  version: 1.2.1
+  resolution: "medusa-core-utils@npm:1.2.1"
+  checksum: 10c0/e4af9fbee6a3067c1ad4a5b41f2a55c9df506e81d459144e72bdc8080770f9a4263ad088d443b10765d6a294b2f477a2b72dc0d9ea3e079604848a7e94a072e2
+  languageName: node
+  linkType: hard
+
 "medusa-core-utils@npm:1.2.3, medusa-core-utils@npm:^1.2.3":
   version: 1.2.3
   resolution: "medusa-core-utils@npm:1.2.3"
@@ -21926,6 +21981,20 @@ __metadata:
     react: ^16.8 || ^17.0 || ^18.0
     react-dom: ^16.8 || ^17.0 || ^18.0
   checksum: 10c0/f4f4751fa9097e180db29d8df2e3706a9c9904c73ed90a92dd718aad996525ac57f5daf5e3e437209a98abd9983731ec3c5fb7ce9e1f2171172506798cabdc31
+  languageName: node
+  linkType: hard
+
+"medusa-storage-supabase@npm:0.1.7":
+  version: 0.1.7
+  resolution: "medusa-storage-supabase@npm:0.1.7"
+  dependencies:
+    "@medusajs/admin": "npm:7.1.11"
+    "@supabase/storage-js": "npm:^2.5.5"
+    "@types/multer": "npm:^1.4.11"
+    cross-fetch: "npm:^4.0.0"
+  peerDependencies:
+    "@medusajs/medusa": ^1.20.2
+  checksum: 10c0/bc2065d812d7449f130b1cd6c2c826e7b380c900ed20e0ea7125b7cd208d0f577cf8a944e39dbde3b6e9c3187463cb17fbee57870cd654067d3cca61fcfaaf40
   languageName: node
   linkType: hard
 
