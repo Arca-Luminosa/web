@@ -12,9 +12,10 @@
     ]
   },
   "devDependencies": {
+    "concurrently": "8.2.2",
     "husky": "9.1.5",
     "lint-staged": "15.2.9",
-    "turbo": "2.0.14"
+    "turbo": "2.1.0"
   },
   "scripts": {
     "prepare": "husky install",
@@ -23,13 +24,16 @@
     "lint": "turbo lint",
     "cms:dev": "yarn workspace @al/cms develop",
     "cms:build": "yarn workspace @al/cms build",
+    "store:dev": "yarn workspace @al/store dev",
+    "storefront:dev": "yarn workspace medusa-next dev",
     "web:dev": "yarn workspace @al/web dev",
     "web:build": "yarn workspace @al/web build",
     "web:start": "yarn workspace @al/web start",
     "web:lint": "yarn workspace @al/web lint",
     "web:test": "yarn workspace @al/web test",
     "web:test:watch": "yarn workspace @al/web test:watch",
-    "web:generate": "yarn workspace @al/web generate"
+    "web:generate": "yarn workspace @al/web generate",
+    "store:start": "concurrently \"yarn store:dev\" \"yarn storefront:dev\""
   },
   "volta": {
     "node": "20.16.0",
