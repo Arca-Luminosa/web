@@ -9,6 +9,7 @@ import { placeOrder } from "@modules/checkout/actions"
 import React, { useState } from "react"
 import ErrorMessage from "../error-message"
 import Spinner from "@modules/common/icons/spinner"
+import { WompiButton } from "./Wompi"
 
 type PaymentButtonProps = {
   cart: Omit<Cart, "refundable_amount" | "refunded_total">
@@ -58,6 +59,8 @@ const PaymentButton: React.FC<PaymentButtonProps> = ({
           data-testid={dataTestId}
         />
       )
+		case 'wompi-widget':
+			return <WompiButton notReady={notReady} cart={cart} />
     default:
       return <Button disabled>Select a payment method</Button>
   }

@@ -50,7 +50,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@al/store@workspace:apps/store"
   dependencies:
-    "@babel/cli": "npm:7.24.8"
+    "@babel/cli": "npm:7.25.6"
     "@babel/core": "npm:7.25.2"
     "@babel/preset-typescript": "npm:7.24.7"
     "@medusajs/admin": "npm:7.1.16"
@@ -62,13 +62,14 @@ __metadata:
     "@medusajs/medusa": "npm:1.20.9"
     "@medusajs/medusa-cli": "npm:1.3.23"
     "@stdlib/number-float64-base-normalize": "npm:0.2.3"
-    "@tanstack/react-query": "npm:5.52.2"
+    "@tanstack/react-query": "npm:5.53.1"
     "@types/express": "npm:4.17.21"
     "@types/jest": "npm:29.5.12"
     "@types/mime": "npm:4.0.0"
-    "@types/node": "npm:22.5.0"
-    "@types/react": "npm:18.3.4"
+    "@types/node": "npm:22.5.1"
+    "@types/react": "npm:18.3.5"
     "@types/react-dom": "npm:18.3.0"
+    axios: "npm:1.7.6"
     babel-preset-medusa-package: "npm:1.1.19"
     body-parser: "npm:1.20.2"
     cors: "npm:2.8.5"
@@ -85,14 +86,14 @@ __metadata:
     medusa-react: "npm:9.0.18"
     medusa-storage-supabase: "npm:0.1.7"
     postcss-loader: "npm:8.1.1"
-    prism-react-renderer: "npm:2.3.1"
+    prism-react-renderer: "npm:2.4.0"
     react: "npm:18.3.1"
     react-dom: "npm:18.3.1"
     rimraf: "npm:6.0.1"
     swc-loader: "npm:0.2.6"
     ts-jest: "npm:29.2.5"
     ts-loader: "npm:9.5.1"
-    type-fest: "npm:4.25.0"
+    type-fest: "npm:4.26.0"
     typeorm: "npm:0.3.20"
     typescript: "npm:5.5.4"
   languageName: unknown
@@ -397,13 +398,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/cli@npm:7.24.8":
-  version: 7.24.8
-  resolution: "@babel/cli@npm:7.24.8"
+"@babel/cli@npm:7.25.6":
+  version: 7.25.6
+  resolution: "@babel/cli@npm:7.25.6"
   dependencies:
     "@jridgewell/trace-mapping": "npm:^0.3.25"
     "@nicolo-ribaudo/chokidar-2": "npm:2.1.8-no-fsevents.3"
-    chokidar: "npm:^3.4.0"
+    chokidar: "npm:^3.6.0"
     commander: "npm:^6.2.0"
     convert-source-map: "npm:^2.0.0"
     fs-readdir-recursive: "npm:^1.1.0"
@@ -420,7 +421,7 @@ __metadata:
   bin:
     babel: ./bin/babel.js
     babel-external-helpers: ./bin/babel-external-helpers.js
-  checksum: 10c0/b7f464ccb00db60aed63d71e980df823900d20c740bc2d9eb36c3abd4b3e2402cc438818382344085ef6603aeea2e6ee19af8f0ecb934966eccf077b87af7c7c
+  checksum: 10c0/861d3c2ed6c47b25a322c2f6127f56783d8d333fc2d02d3815f86301fe1102eca5f61b8a5c8610a6a2872d1ccfce24fd6d4a91f4f73536e43b8e2f28f9dcf5ed
   languageName: node
   linkType: hard
 
@@ -11141,10 +11142,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tanstack/query-core@npm:5.52.2":
-  version: 5.52.2
-  resolution: "@tanstack/query-core@npm:5.52.2"
-  checksum: 10c0/34bc28f492272642159e6eb41cc45d05669a91a7a9124dcfa4a9b721696b921c0909234373035c9f51159069d71ee449459f0d528de500cfb07e6eb8fdd8857c
+"@tanstack/query-core@npm:5.53.1":
+  version: 5.53.1
+  resolution: "@tanstack/query-core@npm:5.53.1"
+  checksum: 10c0/9014bdf5a21f9ba9830cdd1289deeb29e4b881872b86a2dc60cd2ca06a194284437f371b77ec210897c8500429b4f41371d959cecfddfcc73f067ef09fc77a20
   languageName: node
   linkType: hard
 
@@ -11167,14 +11168,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tanstack/react-query@npm:5.52.2":
-  version: 5.52.2
-  resolution: "@tanstack/react-query@npm:5.52.2"
+"@tanstack/react-query@npm:5.53.1":
+  version: 5.53.1
+  resolution: "@tanstack/react-query@npm:5.53.1"
   dependencies:
-    "@tanstack/query-core": "npm:5.52.2"
+    "@tanstack/query-core": "npm:5.53.1"
   peerDependencies:
     react: ^18 || ^19
-  checksum: 10c0/936ecc8d4fbd2f89b5569ae9a2fe6e3c0af6ea02561de5f882b910662f1db1b0d73d7a9cbd94fd4d569a2c0773b5e629da4752dc62d4f3ebcf165f5b56d80c0e
+  checksum: 10c0/2506360d2dc1b57fedaa42b1a01d2f561a672643bc728f36261ff16764c6f0159a0950be8190b52cfabb8911d96c09f2cd124dc41fd1fbca514a0482db3bd813
   languageName: node
   linkType: hard
 
@@ -11773,6 +11774,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/node@npm:22.5.1":
+  version: 22.5.1
+  resolution: "@types/node@npm:22.5.1"
+  dependencies:
+    undici-types: "npm:~6.19.2"
+  checksum: 10c0/35373176d8a1d4e16004a1ed303e68d39e4c6341024dc056f2577982df98c1a045a6b677f12ed557796f09bbf7d621f428f6874cc37ed28f7b336fa604b5f6a6
+  languageName: node
+  linkType: hard
+
 "@types/node@npm:>=8.1.0":
   version: 22.4.0
   resolution: "@types/node@npm:22.4.0"
@@ -11918,6 +11928,16 @@ __metadata:
     "@types/prop-types": "npm:*"
     csstype: "npm:^3.0.2"
   checksum: 10c0/5c52e1e6f540cff21e3c2a5212066d02e005f6fb21e4a536a29097fae878db9f407cd7a4b43778f51359349c5f692e08bc77ddb5f5cecbfca9ca4d4e3c91a48e
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:18.3.5":
+  version: 18.3.5
+  resolution: "@types/react@npm:18.3.5"
+  dependencies:
+    "@types/prop-types": "npm:*"
+    csstype: "npm:^3.0.2"
+  checksum: 10c0/548b1d3d7c2f0242fbfdbbd658731b4ce69a134be072fa83e6ab516f2840402a3f20e3e7f72e95133b23d4880ef24a6d864050dc8e1f7c68f39fa87ca8445917
   languageName: node
   linkType: hard
 
@@ -13231,6 +13251,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"axios@npm:1.7.6":
+  version: 1.7.6
+  resolution: "axios@npm:1.7.6"
+  dependencies:
+    follow-redirects: "npm:^1.15.6"
+    form-data: "npm:^4.0.0"
+    proxy-from-env: "npm:^1.1.0"
+  checksum: 10c0/8b4be67056f8f3895ebadbfce0708e5aa9c537a5a68e2da03bec49d35695e29b57f14ce38f20f55bb19946bd89787a839a7c3afa9e58e1152696c208046f8417
+  languageName: node
+  linkType: hard
+
 "axios@npm:^0.21.4":
   version: 0.21.4
   resolution: "axios@npm:0.21.4"
@@ -14228,7 +14259,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chokidar@npm:^3.4.0, chokidar@npm:^3.4.2, chokidar@npm:^3.5.2, chokidar@npm:^3.5.3":
+"chokidar@npm:^3.4.2, chokidar@npm:^3.5.2, chokidar@npm:^3.5.3, chokidar@npm:^3.6.0":
   version: 3.6.0
   resolution: "chokidar@npm:3.6.0"
   dependencies:
@@ -26151,7 +26182,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prism-react-renderer@npm:2.3.1, prism-react-renderer@npm:^2.0.4, prism-react-renderer@npm:^2.0.6":
+"prism-react-renderer@npm:2.4.0":
+  version: 2.4.0
+  resolution: "prism-react-renderer@npm:2.4.0"
+  dependencies:
+    "@types/prismjs": "npm:^1.26.0"
+    clsx: "npm:^2.0.0"
+  peerDependencies:
+    react: ">=16.0.0"
+  checksum: 10c0/3d6969b057da0efe39e3e637bf93601cd5757de5919180e8df16daf1d1b8eedc39b70c7f6f28724fba0a01bc857c6b78312ab027f4e913159d1165c5aba235bb
+  languageName: node
+  linkType: hard
+
+"prism-react-renderer@npm:^2.0.4, prism-react-renderer@npm:^2.0.6":
   version: 2.3.1
   resolution: "prism-react-renderer@npm:2.3.1"
   dependencies:
@@ -30340,10 +30383,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"type-fest@npm:4.25.0":
-  version: 4.25.0
-  resolution: "type-fest@npm:4.25.0"
-  checksum: 10c0/1187b30d74e72f4b0b44a3493d2c1c2a9dc46423961c8250bd1535e976c4b8afc3916f6b4b90d7f56ed5b2f36d1645b05c318b4915fe4909a8a66890bda1d68d
+"type-fest@npm:4.26.0":
+  version: 4.26.0
+  resolution: "type-fest@npm:4.26.0"
+  checksum: 10c0/3819b65fedd4655ed90703dad9e14248fb61f0a232dce8385e59771bdeaeca08195fe0683d892d62fcd84c0f3bb18bd4b0c3c2ba29023187d267868e75c53076
   languageName: node
   linkType: hard
 

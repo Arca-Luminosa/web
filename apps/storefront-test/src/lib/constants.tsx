@@ -30,6 +30,10 @@ export const paymentInfoMap: Record<
     title: "Test payment",
     icon: <CreditCard />,
   },
+	'wompi-widget': {
+		title: 'Wompi',
+		icon: <CreditCard />,
+	}
   // Add more payment providers here
 }
 
