@@ -18,6 +18,8 @@ enum PaymentMethods {
 
 type LegalId = 'CC' | 'CE' | 'NIT' | 'PP' | 'TI' | 'DNI' | 'RG' | 'OTHER'
 
+type CardBrand = 'VISA' | 'MASTERCARD' | 'AMERICANEXPRESS'
+
 type Address = {
 	addressLine1: string
 	city: string
@@ -134,4 +136,22 @@ type VoidUnprocessableResponse = {
 export type VoidResponse = {
 	data: VoidApprovedResponse | VoidUnprocessableResponse
 	meta: {}
+}
+
+export type CardTokenData = {
+	id: string
+	created_at: string
+	brand: CardBrand
+	name: string
+	last_four: string
+	bin: string
+	exp_year: string
+	exp_month: string
+	card_holder: string
+	expires_at: string
+}
+
+export type CardTokenResponse = {
+	status: 'CREATED',
+	data: CardTokenData
 }
