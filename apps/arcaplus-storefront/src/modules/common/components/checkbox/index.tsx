@@ -1,10 +1,10 @@
 import { Checkbox, Label } from "@medusajs/ui"
-import React from "react"
+import React, { ReactNode } from "react"
 
 type CheckboxProps = {
   checked?: boolean
   onChange?: () => void
-  label: string
+  label: string | ReactNode
   name?: string
   'data-testid'?: string
 }

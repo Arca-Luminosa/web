@@ -13,6 +13,8 @@ import {
   removeAuthToken,
   setAuthToken,
 } from "./cookies"
+import { CardTokenRequest, PaymentSourceRequest } from "@lib/services/wompi.types"
+import { createCardToken, createPaymentSource } from "@lib/services/wompi"
 
 export const retrieveCustomer =
   async (): Promise<HttpTypes.StoreCustomer | null> => {
@@ -174,6 +176,65 @@ export const addCustomerAddress = async (
     .catch((err) => {
       return { success: false, error: err.toString() }
     })
+}
+
+export const addCustomerPaymentSource = async (_currentState: unknown, formData: FormData): Promise<any> => {
+	const data = {
+		card_holder: formData.get("card_holder") as string,
+		number: formData.get("number") as string,
+		exp_month: formData.get("exp_month") as string,
+		exp_year: formData.get("exp_year") as string,
+		cvc: formData.get("cvc") as string,
+		acceptance_token: formData.get("acceptance_token") as string,
+		accept_personal_auth: formData.get("accept_personal_auth") as string,
+		customer_email: formData.get("customer_email") as string
+	}
+	console.info({ data })
+
+	const cardData: CardTokenRequest = {
+		card_holder: data.card_holder,
+		number: data.number,
+		exp_month: data.exp_month,
+		exp_year: data.exp_year,
+		cvc: data.cvc
+	}
+
+	try {
+		const token = await createCardToken(cardData)
+		console.info(token)
+
+		const paymentSourceData: PaymentSourceRequest = {
+			type: 'CARD',
+			token: token.data.id,
+			customer_email: data.customer_email,
+			acceptance_token: data.acceptance_token,
+			accept_personal_auth: data.accept_personal_auth
+		}
+
+		const paymentSource = await createPaymentSource(paymentSourceData)
+		console.info(paymentSource)
+		// ToDo: Send the payment source to medusa
+	} catch (e) {
+		console.error((e as Error).message)
+		return { success: false, error: (e as Error).toString() }
+	}
+
+	const headers = {
+		...(await getAuthHeaders()),
+	}
+
+	return { success: true, error: null }
+
+	// return sdk.store.customer
+	// 	.createAddress(address, {}, headers)
+	// 	.then(async ({ customer }) => {
+	// 		const customerCacheTag = await getCacheTag("customers")
+	// 		revalidateTag(customerCacheTag)
+	// 		return { success: true, error: null }
+	// 	})
+	// 	.catch((err) => {
+	// 		return { success: false, error: err.toString() }
+	// 	})
 }
 
 export const deleteCustomerAddress = async (
