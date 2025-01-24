@@ -198,22 +198,36 @@ export type PaymentSourceRequest = {
 	accept_personal_auth: string
 }
 
-export type PaymentSourceResponse = {
-	data: {
-		id: number
-		public_data: {
-			bin: string
-			last_four: string
-			exp_month: string
-			exp_year: string
-			card_holder: string
-			validity_ends_at: string
-			type: `${PaymentMethods}`
-		}
-		token: string
+export type PaymentSourceData = {
+	id: number
+	public_data: {
+		bin: string
+		last_four: string
+		exp_month: string
+		exp_year: string
+		card_holder: string
+		validity_ends_at: string
 		type: `${PaymentMethods}`
-		status: "AVAILABLE"
-		customer_email: string
-	},
+	}
+	token: string
+	type: `${PaymentMethods}`
+	status: 'AVAILABLE'
+	customer_email: string
+}
+
+export type PaymentSourceResponse = {
+	data: PaymentSourceData
 	meta: {}
+}
+
+export type MedusaPaymentSourceResponse = {
+	id: string
+	data: PaymentSourceData
+	created_at: string | Date
+	updated_at: string | Date
+	deleted_at: string | Date | null
+}
+
+export type PaymentSourceDeletedResponse = {
+	message: string
 }

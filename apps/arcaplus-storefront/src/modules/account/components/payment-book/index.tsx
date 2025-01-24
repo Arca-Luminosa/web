@@ -1,25 +1,21 @@
 import React from "react"
 
 
-import AddPaymentSource from "../payment-source-card/add-payment-source"
-// import EditAddress from "../address-card/edit-address-modal"
+import PaymentSource from "../payment-source-card/payment-source"
 import { HttpTypes } from "@medusajs/types"
+import { getPaymentSource } from "@lib/data/payment-sources"
 
 type PaymentBookProps = {
   customer: HttpTypes.StoreCustomer
   region: HttpTypes.StoreRegion
 }
 
-const PaymentBook: React.FC<PaymentBookProps> = ({ customer, region }) => {
+const PaymentBook: React.FC<PaymentBookProps> = async ({ customer }) => {
+	const paymentSource = await getPaymentSource()
   return (
     <div className="w-full">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 flex-1 mt-4">
-        <AddPaymentSource email={customer.email} />
-        {/* {customer.addresses.map((address) => {
-          return (
-            <EditAddress region={region} address={address} key={address.id} />
-          )
-        })} */}
+        <PaymentSource email={customer.email} savedPaymentSource={paymentSource} />
       </div>
     </div>
   )

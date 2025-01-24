@@ -1,7 +1,6 @@
 "use client"
-
-import { Plus } from "@medusajs/icons"
-import { Button, Heading } from "@medusajs/ui"
+import { Button, Heading, Text } from "@medusajs/ui"
+import { PencilSquare as Edit, Plus, Trash, Spinner } from "@medusajs/icons"
 import { useEffect, useState, useActionState } from "react";
 
 import useToggleState from "@lib/hooks/use-toggle-state"
@@ -9,12 +8,14 @@ import Input from "@modules/common/components/input"
 import CheckboxWithLabel from "@modules/common/components/checkbox";
 import Modal from "@modules/common/components/modal"
 import { SubmitButton } from "@modules/checkout/components/submit-button"
-import { addCustomerPaymentSource } from "@lib/data/customer"
+import { addPaymentSource, deletePaymentSource } from "@lib/data/payment-sources"
 import { getAcceptanceTokens } from "@lib/services/wompi";
+import { PaymentSourceData } from "@lib/services/wompi.types";
 
-const AddPaymentSource = ({ email }: { email: string }) => {
+const PaymentSource = ({ email, savedPaymentSource }: { email: string, savedPaymentSource?: PaymentSourceData }) => {
   const [successState, setSuccessState] = useState(false)
   const { state, open, close: closeModal } = useToggleState(false)
+	const [removing, setRemoving] = useState(false)
 	const [acceptanceDocument, setAcceptanceDocument] = useState<string | undefined>(undefined)
 	const [acceptanceToken, setAcceptanceToken] = useState<string | undefined>(undefined)
 	const [personalDataAuthDocument, setPersonalDataAuthDocument] = useState<string | undefined>(undefined)
@@ -22,7 +23,9 @@ const AddPaymentSource = ({ email }: { email: string }) => {
 	const [hasReadRules, setHasReadRules] = useState(false)
 	const [hasAcceptedDataManagement, setHasAcceptedDataManagement] = useState(false)
 
-  const [formState, formAction] = useActionState(addCustomerPaymentSource, {
+	const [paymentSource, setPaymentSource] = useState(savedPaymentSource)
+
+  const [formState, formAction] = useActionState(addPaymentSource, {
     success: false,
     error: null,
   })
@@ -48,6 +51,7 @@ const AddPaymentSource = ({ email }: { email: string }) => {
   useEffect(() => {
     if (formState.success) {
       setSuccessState(true)
+			setPaymentSource(formState.data)
     }
   }, [formState])
 
@@ -62,18 +66,56 @@ const AddPaymentSource = ({ email }: { email: string }) => {
 		if (state) {
 			getPresignedTokens()
 		}
-	}, [state])
+	}, [state, formState.error])
+
+	const removePaymentSource = async () => {
+		setRemoving(true)
+		const dp = await deletePaymentSource()
+		console.log(dp)
+		setRemoving(false)
+		setPaymentSource(undefined)
+	}
 
   return (
     <>
-      <button
+      {!savedPaymentSource &&<button
         className="border border-ui-border-base rounded-rounded p-5 min-h-[220px] h-full w-full flex flex-col justify-between"
         onClick={open}
-        data-testid="add-payment-source-button"
       >
-        <span className="text-base-semi">New payment source</span>
+				<span className="text-base-semi">Add a payment source</span>
         <Plus />
-      </button>
+      </button>}
+
+			{savedPaymentSource && <div
+				className="border rounded-rounded p-5 min-h-[220px] h-full w-full flex flex-col justify-between transition-colors"
+			>
+				<div className="flex flex-col">
+					<Heading
+						className="text-left text-base-semi"
+					>
+						{savedPaymentSource.public_data.card_holder}
+					</Heading>
+					<Text className="flex flex-col text-left text-base-regular mt-2">
+						<span>XXXXXXXXXXXX<b>{savedPaymentSource.public_data.last_four}</b></span>
+					</Text>
+				</div>
+				<div className="flex items-center gap-x-4">
+					<button
+						className="text-small-regular text-ui-fg-base flex items-center gap-x-2"
+						onClick={open}
+					>
+						<Edit />
+						Edit
+					</button>
+					<button
+						className="text-small-regular text-ui-fg-base flex items-center gap-x-2"
+						onClick={removePaymentSource}
+					>
+						{removing ? <Spinner /> : <Trash />}
+						Remove
+					</button>
+				</div>
+			</div>}
 
       <Modal isOpen={state} close={close} data-testid="add-payment-source-modal">
         <Modal.Title>
@@ -98,18 +140,21 @@ const AddPaymentSource = ({ email }: { email: string }) => {
                 <Input
                   label="Expiration month"
                   name="exp_month"
+									pattern="\d{2}"
                   required
                   data-testid="exp-month-input"
                 />
                 <Input
                   label="Expiration year"
                   name="exp_year"
+									pattern="\d{2}"
                   required
                   data-testid="exp-year-input"
                 />
 								<Input
 									label="CVC"
 									name="cvc"
+									pattern="\d{3,4}"
 									required
 									data-testid="cvc-input"
 								/>
@@ -170,4 +215,4 @@ const AddPaymentSource = ({ email }: { email: string }) => {
   )
 }
 
-export default AddPaymentSource
+export default PaymentSource
