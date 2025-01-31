@@ -10,6 +10,7 @@ import Spinner from "@modules/common/icons/spinner"
 import { placeOrder } from "@lib/data/cart"
 import { HttpTypes } from "@medusajs/types"
 import { isManual, isPaypal, isStripe } from "@lib/constants"
+import { WompiButton } from "./Wompi"
 
 type PaymentButtonProps = {
   cart: HttpTypes.StoreCart
@@ -58,6 +59,10 @@ const PaymentButton: React.FC<PaymentButtonProps> = ({
           data-testid={dataTestId}
         />
       )
+		case paymentSession?.provider_id === 'pp_wompi_wompi':
+			return (
+				<WompiButton cart={cart} notReady={notReady} />
+			)
     default:
       return <Button disabled>Select a payment method</Button>
   }

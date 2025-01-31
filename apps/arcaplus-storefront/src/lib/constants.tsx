@@ -30,6 +30,10 @@ export const paymentInfoMap: Record<
     title: "Manual Payment",
     icon: <CreditCard />,
   },
+	pp_wompi_wompi: {
+		title: 'Wompi',
+		icon: <CreditCard />,
+	}
   // Add more payment providers here
 }
 

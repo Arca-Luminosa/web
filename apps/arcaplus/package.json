@@ -25,15 +25,16 @@
     "db:sync-links": "medusa db:sync-links"
   },
   "dependencies": {
-    "@medusajs/admin-sdk": "2.2.0",
-    "@medusajs/cli": "2.2.0",
-    "@medusajs/framework": "2.2.0",
-    "@medusajs/medusa": "2.2.0",
-    "@mikro-orm/core": "5.9.8",
-    "@mikro-orm/knex": "5.9.8",
-    "@mikro-orm/migrations": "5.9.8",
-    "@mikro-orm/postgresql": "5.9.8",
+    "@medusajs/admin-sdk": "2.4.0",
+    "@medusajs/cli": "2.4.0",
+    "@medusajs/framework": "2.4.0",
+    "@medusajs/medusa": "2.4.0",
+    "@mikro-orm/core": "6.4.5",
+    "@mikro-orm/knex": "6.4.5",
+    "@mikro-orm/migrations": "6.4.5",
+    "@mikro-orm/postgresql": "6.4.5",
     "awilix": "8.0.1",
+    "axios": "1.7.9",
     "moment": "2.30.1",
     "pg": "8.13.1",
     "react": "18.3.1",
@@ -41,12 +42,12 @@
     "react-router-dom": "6.20.1"
   },
   "devDependencies": {
-    "@medusajs/test-utils": "2.2.0",
-    "@mikro-orm/cli": "5.9.8",
-    "@swc/core": "1.10.7",
+    "@medusajs/test-utils": "2.4.0",
+    "@mikro-orm/cli": "6.4.5",
+    "@swc/core": "1.10.12",
     "@swc/jest": "0.2.37",
     "@types/jest": "29.5.14",
-    "@types/node": "22.10.6",
+    "@types/node": "22.12.0",
     "@types/react": "18.3.18",
     "@types/react-dom": "18.3.5",
     "@types/react-router-dom": "5.3.3",
@@ -54,7 +55,7 @@
     "prop-types": "15.8.1",
     "ts-node": "10.9.2",
     "typescript": "5.7.3",
-    "vite": "6.0.7"
+    "vite": "6.0.11"
   },
   "engines": {
     "node": ">=20"
