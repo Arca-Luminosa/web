@@ -1,0 +1,14 @@
+{
+  "name": "@al/wompi",
+  "type": "module",
+  "scripts": {
+    "build": "rolldown -c rolldown.config.ts"
+  },
+  "devDependencies": {
+    "rolldown": "1.0.0-beta.3",
+    "rollup-plugin-esbuild": "6.2.0"
+  },
+  "peerDependencies": {
+    "axios": "1.7.9"
+  }
+}
