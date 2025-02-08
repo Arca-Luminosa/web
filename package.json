@@ -35,7 +35,8 @@
     "web:test": "yarn workspace @al/web test",
     "web:test:watch": "yarn workspace @al/web test:watch",
     "web:generate": "yarn workspace @al/web generate",
-    "store:start": "concurrently \"yarn store:dev\" \"yarn storefront:dev\""
+    "store:start": "concurrently \"yarn store:dev\" \"yarn storefront:dev\"",
+    "dev": "concurrently \"yarn cms:dev\" \"yarn web:dev\""
   },
   "volta": {
     "node": "20.16.0",

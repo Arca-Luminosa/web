@@ -1,3 +1,6 @@
+import type { Core } from '@strapi/strapi';
+import { graphQLExtensions } from './extensions/graphQL'
+
 export default {
   /**
    * An asynchronous register function that runs before
@@ -5,7 +8,10 @@ export default {
    *
    * This gives you an opportunity to extend code.
    */
-  register(/*{ strapi }*/) {},
+  register({ strapi }: { strapi: Core.Strapi }) {
+		const gQLextensionService = strapi.plugin('graphql').service('extension')
+		graphQLExtensions(gQLextensionService)
+	},
 
   /**
    * An asynchronous bootstrap function that runs before
@@ -14,5 +20,5 @@ export default {
    * This gives you an opportunity to set up your data model,
    * run jobs, or perform some special logic.
    */
-  bootstrap(/*{ strapi }*/) {},
+  bootstrap(/*{ strapi }: { strapi: Core.Strapi }*/) {},
 };
