@@ -1,14 +1,12 @@
 'use client'
 import { useState } from 'react'
-import type { ReactNode } from 'react'
+import type { PropsWithChildren } from 'react'
 import { useServerInsertedHTML } from 'next/navigation'
 import { ServerStyleSheet, StyleSheetManager } from 'styled-components'
 
-export default function StyledComponentsRegistry({
+export function StyledComponentsRegistry({
 	children,
-}: {
-	children: ReactNode
-}) {
+}: PropsWithChildren) {
 	// Only create stylesheet once with lazy initial state
 	// x-ref: https://reactjs.org/docs/hooks-reference.html#lazy-initial-state
 	const [styledComponentsStyleSheet] = useState(() => new ServerStyleSheet())

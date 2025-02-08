@@ -1,9 +1,10 @@
 {
   "name": "@al/web",
+  "description": "Website for ArcaPlus",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -11,7 +12,11 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
+    "@apollo/client": "3.12.11",
+    "@apollo/experimental-nextjs-app-support": "0.11.8",
+    "@next/third-parties": "15.1.6",
     "next": "15.1.6",
+    "polished": "4.3.1",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "styled-components": "6.1.15"
@@ -25,7 +30,7 @@
     "@types/node": "22.13.1",
     "@types/react": "19.0.8",
     "@types/react-dom": "19.0.3",
-    "eslint": "9.19.0",
+    "eslint": "9.20.0",
     "eslint-config-next": "15.1.6",
     "eslint-config-prettier": "10.0.1",
     "jest": "29.7.0",
