@@ -1,10 +1,10 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client'
+import { Section } from '@/lib/ui'
 
 export default function Home() {
   return (
-    <article>
+    <Section>
       Hola, Arca!
-    </article>
+    </Section>
   );
 }

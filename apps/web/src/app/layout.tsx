@@ -1,6 +1,6 @@
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { Document, Providers, StyledComponentsRegistry } from '@/lib/components';
-import type { FooterProps } from '@/lib/ui';
+import type { FooterProps, HeaderProps } from '@/lib/ui';
 
 const { GA_MEASUREMENT_ID } = process.env
 
@@ -9,6 +9,7 @@ export default async function RootLayout({
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
+	const headerProps: HeaderProps = {}
 
 	const footerProps: FooterProps = {
 		id: 'footer',
@@ -19,7 +20,7 @@ export default async function RootLayout({
 	return (
 		<StyledComponentsRegistry>
 			<Providers>
-				<Document footer={footerProps}>
+				<Document footer={footerProps} header={headerProps}>
 					{children}
 					{GA_MEASUREMENT_ID && <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />}
 				</Document>

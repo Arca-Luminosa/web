@@ -2,8 +2,8 @@
 import { PropsWithChildren, useEffect } from 'react'
 import Script from 'next/script'
 import { DefaultTheme, useTheme } from 'styled-components'
-import { Footer, /* Header, */ Main } from '@/lib/ui'
-import type { FooterProps/*, HeaderProps*/ } from '@/lib/ui'
+import { Footer, Header, Main } from '@/lib/ui'
+import type { FooterProps, HeaderProps } from '@/lib/ui'
 import pkg from '../../../package.json'
 
 const logAppVersion = (theme: DefaultTheme ) => console.log(
@@ -15,13 +15,13 @@ const logAppVersion = (theme: DefaultTheme ) => console.log(
 )
 
 type DocumentProps = {
-	// header: HeaderProps
+	header: HeaderProps
 	footer: FooterProps
 }
 
 export const Document = ({
 	children,
-	// header,
+	header,
 	footer
 }: PropsWithChildren<DocumentProps>) => {
 	const theme = useTheme()
@@ -44,7 +44,7 @@ export const Document = ({
 					strategy='beforeInteractive'
 					src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
 				/>}
-				{/* <Header {...header} /> */}
+				<Header {...header} />
 				<Main>
 					{children}
 				</Main>

@@ -1,5 +1,5 @@
 import { forwardRef } from 'react';
-import Image from 'next/image'
+// import Image from 'next/image'
 import Link from 'next/link'
 import { WrappedHeader, Logo, Nav, Ul, Li, A } from './Header.styles'
 import { Button } from '@/lib/ui'
@@ -17,24 +17,25 @@ export type Menu = {
 }
 
 export type HeaderProps = {
-	logo: string
-	logoAltText: string
-	logoWidth: number
-	logoHeight: number
-	fixed?: boolean
-	menu: Menu
+	// logo: string
+	// logoAltText: string
+	// logoWidth: number
+	// logoHeight: number
+	// fixed?: boolean
+	// menu: Menu
 }
 
-export const Header = forwardRef<Element, HeaderProps>(({ logo, logoAltText, logoWidth, logoHeight, fixed, menu }, ref) => (
-	<WrappedHeader ref={ref} $isFixed={fixed}>
+export const Header = forwardRef<Element, HeaderProps>(({ /*logo, logoAltText, logoWidth, logoHeight, fixed, menu*/ }, ref) => (
+	<WrappedHeader ref={ref} /*$isFixed={fixed}*/>
 		<Logo>
 			<Link href="/">
-				<Image src={logo} alt={logoAltText} width={logoWidth} height={logoHeight} priority />
+				{/* <Image src={logo} alt={logoAltText} width={logoWidth} height={logoHeight} priority /> */}
+				Aquí va el logo
 			</Link>
 		</Logo>
 		<Nav>
 			<Ul>
-				{menu.items.map(({ label, link, type, newTab = false }) => {
+				{/* {menu.items.map(({ label, link, type, newTab = false }) => {
 					const ClickableElement = type === 'link' ? A : Button
 					const isSecondary = type === 'secondary' ? true : undefined
 					return (
@@ -42,7 +43,13 @@ export const Header = forwardRef<Element, HeaderProps>(({ logo, logoAltText, log
 							<ClickableElement href={link} target={newTab ? '_blank' : '_self'} secondary={isSecondary}>{label}</ClickableElement>
 						</Li>
 					)
-				})}
+				})} */}
+				<Li>
+					<Button href="/ingreso">Ingresa</Button>
+				</Li>
+				<Li>
+					<Button href="/registro" secondary>Regístrate</Button>
+				</Li>
 			</Ul>
 		</Nav>
 	</WrappedHeader>

@@ -14,5 +14,8 @@ export type { HeaderProps } from './Header'
 export { Link } from './Link'
 export type { LinkProps } from './Link'
 
+export { Section } from './Section'
+export type { SectionProps } from './Section'
+
 export { Spinner } from './Spinner'
 export type { SpinnerProps } from './Spinner'
