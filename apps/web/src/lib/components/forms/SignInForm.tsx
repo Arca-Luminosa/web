@@ -1,18 +1,40 @@
 'use client'
+import { useActionState } from 'react'
+import { registerUser } from '@/lib/actions/auth-actions'
 import { Link, Section } from '@/lib/ui'
 
-export const SignInForm = () => <Section>
-	<form>
-		<p>Crea una cuenta:</p>
-		<input name="name" type="text" placeholder="Tu nombre" />
-		<input name="lastName" type="text" placeholder="Tu apellido" />
-		<input name="username" type="text" placeholder="Tu nombre de usuario" />
-		<input name="email" type="email" placeholder="Tu correo electrónico" />
-		<input name="password" type="password" placeholder="Contraseña" />
-		<button type="submit">Crear cuenta</button>
-	</form>
-	<section>
-		<p>¿Ya tienes una cuenta?</p>
-		<Link href="/ingreso">¡Ingresa aquí!</Link>
-	</section>
-</Section>
+export const SignInForm = () => {
+	const [state, registerUserAction, pending] = useActionState(registerUser, undefined)
+	console.log(state)
+	const renderErrors = (errors: string[]) => errors.map((error) => <p key={error}>{error}</p>)
+	return <Section>
+		<form action={registerUserAction}>
+			<p>Crea una cuenta:</p>
+			<div>
+				<input defaultValue={state?.inputs.name} name="name" type="text" placeholder="Tu nombre" required />
+				{state?.errors?.name && renderErrors(state.errors.name)}
+			</div>
+			<div>
+				<input defaultValue={state?.inputs.lastName} name="lastName" type="text" placeholder="Tu apellido" required />
+				{state?.errors?.lastName && renderErrors(state.errors.lastName)}
+			</div>
+			<div>
+				<input defaultValue={state?.inputs.username} name="username" type="text" placeholder="Tu nombre de usuario" required />
+				{state?.errors?.username && renderErrors(state.errors.username)}
+			</div>
+			<div>
+				<input defaultValue={state?.inputs.email} name="email" type="email" placeholder="Tu correo electrónico" required />
+				{state?.errors?.email && renderErrors(state.errors.email)}
+			</div>
+			<div>
+				<input defaultValue={state?.inputs.password} name="password" type="password" placeholder="Contraseña" required />
+				{state?.errors?.password && renderErrors(state.errors.password)}
+			</div>
+			<button type="submit" disabled={pending}>Crear cuenta</button>
+		</form>
+		<section>
+			<p>¿Ya tienes una cuenta?</p>
+			<Link href="/ingreso">¡Ingresa aquí!</Link>
+		</section>
+	</Section>
+}
