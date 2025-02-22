@@ -1,7 +1,8 @@
 import 'server-only'
 import { redirect } from 'next/navigation'
-import { verify } from 'jsonwebtoken'
 import { cookies } from 'next/headers'
+import { verify } from 'jsonwebtoken'
+import { ROUTES } from '@/lib/routes'
 
 const { JWT_SECRET } = process.env
 
@@ -29,14 +30,14 @@ export const createSession = async (jwt: string) => {
 
 export const verifySession = async () => {
 	const sessionCookie = (await cookies()).get('session')
-	if (!sessionCookie) redirect('/login')
+	if (!sessionCookie) redirect(ROUTES.login)
 
 	const jwt = sessionCookie.value
 	const session = verify(jwt, JWT_SECRET)
 
 	if (typeof session === 'string' || !session.id) {
 		console.error('Invalid session:', session)
-		redirect('/login')
+		redirect(ROUTES.login)
 	}
 
 	return { id: session.id }

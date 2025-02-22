@@ -1,9 +1,10 @@
-import { forwardRef } from 'react';
+import { forwardRef } from 'react'
 // import Image from 'next/image'
 import Link from 'next/link'
 import { WrappedHeader, Logo, Nav, Ul, Li, A } from './Header.styles'
 import { Button } from '@/lib/ui'
-import { logOut } from '@/lib/actions/auth.actions';
+import { logOut } from '@/lib/actions/auth.actions'
+import { ROUTES } from '@/lib/routes'
 
 type MenuItem = {
 	label: string
@@ -47,10 +48,10 @@ export const Header = forwardRef<Element, HeaderProps>(({ /*logo, logoAltText, l
 					)
 				})} */}
 				{!hasSession && <Li>
-					<Button href="/login">Login</Button>
+					<Button href={ROUTES.login}>Login</Button>
 				</Li>}
 				{!hasSession && <Li>
-					<Button href="/registro" secondary>Regístrate</Button>
+					<Button href={ROUTES.signup} secondary>Regístrate</Button>
 				</Li>}
 				{hasSession && <Li>
 					<Button onClick={logOut}>Cerrar sesión</Button>

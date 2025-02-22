@@ -2,6 +2,7 @@
 import { useActionState } from 'react'
 import { logIn } from '@/lib/actions/auth.actions'
 import { Link, Section } from '@/lib/ui'
+import { ROUTES } from '@/lib/routes'
 
 export const LogInForm = () => {
 	const [state, logInAction, pending] = useActionState(logIn, undefined)
@@ -21,7 +22,7 @@ export const LogInForm = () => {
 		</form>
 		<section>
 			<p>¿No tienes una cuenta?</p>
-			<Link href="/registro">¡Crea una!</Link>
+			<Link href={ROUTES.signup}>¡Crea una!</Link>
 		</section>
 	</Section>
 }

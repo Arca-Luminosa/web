@@ -1,5 +1,6 @@
 'use server'
 import { redirect } from 'next/navigation'
+import { ROUTES } from '@/lib/routes'
 import { logInUser, registerUser } from '@/lib/services/strapi'
 import { createSession, deleteSession } from '@/lib//services/session'
 import type { UserResponse, UsersPermissionsLoginInput } from '@/lib/data/mutations/user.types'
@@ -33,7 +34,7 @@ export const signUp = async (prevState: RegisterFormState, formData: FormData) =
 		};
 	}
 	await createSession(newUser.jwt);
-	redirect('/mi-cuenta')
+	redirect(ROUTES.account)
 }
 
 export const logIn = async (prevState: LogInFormState, formData: FormData) => {
@@ -68,10 +69,10 @@ export const logIn = async (prevState: LogInFormState, formData: FormData) => {
 		};
 	}
 	await createSession(loggedInUser.jwt);
-	redirect('/mi-cuenta');
+	redirect(ROUTES.account);
 }
 
 export const logOut = async () => {
 	await deleteSession()
-	redirect('/login')
+	redirect(ROUTES.login)
 }
