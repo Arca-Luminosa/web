@@ -32,7 +32,7 @@ export const verifySession = async () => {
 	const sessionCookie = (await cookies()).get('session')
 	if (!sessionCookie) redirect(ROUTES.login)
 
-	const jwt = sessionCookie.value
+	const { value: jwt } = sessionCookie
 	const session = verify(jwt, JWT_SECRET)
 
 	if (typeof session === 'string' || !session.id) {
@@ -40,7 +40,7 @@ export const verifySession = async () => {
 		redirect(ROUTES.login)
 	}
 
-	return { id: session.id }
+	return { isAuthorised: true, userId: session.id, jwt }
 }
 
 export const deleteSession = async () => {
