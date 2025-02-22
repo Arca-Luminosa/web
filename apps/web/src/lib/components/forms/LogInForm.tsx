@@ -1,15 +1,27 @@
 'use client'
+import { useActionState } from 'react'
+import { logIn } from '@/lib/actions/auth.actions'
 import { Link, Section } from '@/lib/ui'
 
-export const LogInForm = () => <Section>
-	<form>
-		<p>Ingresa a tu cuenta:</p>
-		<input name="email" type="email" placeholder="Correo electrónico" />
-		<input name="password" type="password" placeholder="Contraseña" />
-		<button type="submit">Iniciar sesión</button>
-	</form>
-	<section>
-		<p>¿No tienes una cuenta?</p>
-		<Link href="/registro">¡Crea una!</Link>
-	</section>
-</Section>
+export const LogInForm = () => {
+	const [state, logInAction, pending] = useActionState(logIn, undefined)
+	return <Section>
+		<form action={logInAction}>
+			<p>Ingresa a tu cuenta:</p>
+			<div>
+				<input defaultValue={state?.inputs.identifier} name="identifier" placeholder="Correo electrónico o nombre de usuario" />
+				{state?.errors?.identifier && <p>{state.errors.identifier}</p>}
+			</div>
+			<div>
+				<input defaultValue={state?.inputs.password} name="password" type="password" placeholder="Contraseña" />
+				{state?.errors?.password && <p>{state.errors.password}</p>}
+			</div>
+			{state?.message && <p>{state.message}</p>}
+			<button type="submit" disabled={pending}>Iniciar sesión</button>
+		</form>
+		<section>
+			<p>¿No tienes una cuenta?</p>
+			<Link href="/registro">¡Crea una!</Link>
+		</section>
+	</Section>
+}

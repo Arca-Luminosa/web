@@ -3,6 +3,7 @@ import { forwardRef } from 'react';
 import Link from 'next/link'
 import { WrappedHeader, Logo, Nav, Ul, Li, A } from './Header.styles'
 import { Button } from '@/lib/ui'
+import { logOut } from '@/lib/actions/auth.actions';
 
 type MenuItem = {
 	label: string
@@ -23,9 +24,10 @@ export type HeaderProps = {
 	// logoHeight: number
 	// fixed?: boolean
 	// menu: Menu
+	hasSession?: boolean
 }
 
-export const Header = forwardRef<Element, HeaderProps>(({ /*logo, logoAltText, logoWidth, logoHeight, fixed, menu*/ }, ref) => (
+export const Header = forwardRef<Element, HeaderProps>(({ /*logo, logoAltText, logoWidth, logoHeight, fixed, menu,*/ hasSession }, ref) => (
 	<WrappedHeader ref={ref} /*$isFixed={fixed}*/>
 		<Logo>
 			<Link href="/">
@@ -44,12 +46,15 @@ export const Header = forwardRef<Element, HeaderProps>(({ /*logo, logoAltText, l
 						</Li>
 					)
 				})} */}
-				<Li>
-					<Button href="/ingreso">Ingresa</Button>
-				</Li>
-				<Li>
+				{!hasSession && <Li>
+					<Button href="/login">Login</Button>
+				</Li>}
+				{!hasSession && <Li>
 					<Button href="/registro" secondary>Regístrate</Button>
-				</Li>
+				</Li>}
+				{hasSession && <Li>
+					<Button onClick={logOut}>Cerrar sesión</Button>
+				</Li>}
 			</Ul>
 		</Nav>
 	</WrappedHeader>

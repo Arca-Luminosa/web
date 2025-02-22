@@ -1,10 +1,5 @@
-'use client'
-import { Section } from '@/lib/ui'
+import { Home } from "@/lib/components/pages/home"
 
-export default function Home() {
-  return (
-    <Section>
-      Hola, Arca!
-    </Section>
-  );
-}
+const HomePage = async () => <Home />
+
+export default HomePage

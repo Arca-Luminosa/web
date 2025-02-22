@@ -1,5 +1,5 @@
-import { SignInForm } from '@/lib/components/forms/SignInForm'
+import { SignUpForm } from '@/lib/components/forms/SignUpForm'
 
-const SignInPage = () => <SignInForm />
+const SignUpPage = async () => <SignUpForm />
 
-export default SignInPage
+export default SignUpPage

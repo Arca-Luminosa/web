@@ -1,14 +1,13 @@
 'use client'
 import { useActionState } from 'react'
-import { registerUser } from '@/lib/actions/auth-actions'
+import { signUp } from '@/lib/actions/auth.actions'
 import { Link, Section } from '@/lib/ui'
 
-export const SignInForm = () => {
-	const [state, registerUserAction, pending] = useActionState(registerUser, undefined)
-	console.log(state)
+export const SignUpForm = () => {
+	const [state, signUpAction, pending] = useActionState(signUp, undefined)
 	const renderErrors = (errors: string[]) => errors.map((error) => <p key={error}>{error}</p>)
 	return <Section>
-		<form action={registerUserAction}>
+		<form action={signUpAction}>
 			<p>Crea una cuenta:</p>
 			<div>
 				<input defaultValue={state?.inputs.name} name="name" type="text" placeholder="Tu nombre" required />
@@ -31,10 +30,11 @@ export const SignInForm = () => {
 				{state?.errors?.password && renderErrors(state.errors.password)}
 			</div>
 			<button type="submit" disabled={pending}>Crear cuenta</button>
+			{state?.message && <p>{state.message}</p>}
 		</form>
 		<section>
 			<p>¿Ya tienes una cuenta?</p>
-			<Link href="/ingreso">¡Ingresa aquí!</Link>
+			<Link href="/login">¡Ingresa aquí!</Link>
 		</section>
 	</Section>
 }
